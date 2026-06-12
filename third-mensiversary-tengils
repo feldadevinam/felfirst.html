@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 3rd Mensiversary, Tengils 🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@400;600;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  /* ==================== CSS VARIABLES ==================== */
+  :root {
+    --magenta: #832D51;
+    --cyclamen: #EA6993;
+    --fairy: #F8CAE4;
+    --tea-green: #CFDD9D;
+    --viridian: #447A5F;
+    --cream: #FDF6F0;
+    --beige: #F5EBE0;
+    --blush: #FADADD;
+    --sand: #E8D5C0;
+    --brown-text: #5C3D2E;
+    --soft-pink: #F2B5C8;
+    --font-display: 'Dancing Script', cursive;
+    --font-serif: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 100%; height: 100%;
+    overflow: hidden;
+    background: var(--cream);
+    font-family: var(--font-body);
+    color: var(--brown-text);
+  }
+
+  /* ==================== PAGE SYSTEM ==================== */
+  .page {
+    position: fixed;
+    inset: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateY(30px);
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .page.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+  .page.exit {
+    opacity: 0;
+    transform: translateY(-30px);
+    pointer-events: none;
+  }
+
+  /* ==================== GLOBAL ELEMENTS ==================== */
+  .btn {
+    background: linear-gradient(135deg, var(--cyclamen), var(--magenta));
+    color: white;
+    border: none;
+    padding: 14px 40px;
+    border-radius: 50px;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    cursor: pointer;
+    letter-spacing: 1px;
+    box-shadow: 0 6px 20px rgba(131,45,81,0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.15);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .btn:hover::after { opacity: 1; }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(131,45,81,0.4); }
+  .btn:active { transform: translateY(0); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--magenta);
+    border: 2px solid var(--cyclamen);
+    padding: 12px 36px;
+    border-radius: 50px;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .btn-outline:hover {
+    background: var(--fairy);
+    border-color: var(--magenta);
+  }
+
+  /* Floating stars */
+  .stars-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .star {
+    position: absolute;
+    animation: floatStar linear infinite;
+    opacity: 0;
+  }
+  @keyframes floatStar {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* Confetti */
+  .confetti-piece {
+    position: fixed;
+    width: 8px; height: 8px;
+    border-radius: 2px;
+    animation: confettiFall linear forwards;
+    z-index: 999;
+    pointer-events: none;
+  }
+  @keyframes confettiFall {
+    0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* ==================== PAGE 1 — COVER ==================== */
+  #page1 {
+    background: linear-gradient(160deg, var(--cream) 0%, var(--beige) 40%, var(--fairy) 100%);
+    text-align: center;
+    padding: 40px 24px;
+  }
+  .cover-card {
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    padding: 50px 40px;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(131,45,81,0.12);
+    border: 1px solid rgba(248,202,228,0.6);
+    position: relative;
+    z-index: 2;
+  }
+  .cover-eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--cyclamen);
+    margin-bottom: 16px;
+  }
+  .cover-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 7vw, 3rem);
+    color: var(--magenta);
+    line-height: 1.2;
+    margin-bottom: 12px;
+    animation: fadeInUp 1s ease 0.3s both;
+  }
+  .cover-subtitle {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: #a07080;
+    font-size: 1rem;
+    margin-bottom: 36px;
+    animation: fadeInUp 1s ease 0.6s both;
+  }
+  .sparkle-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 32px;
+    animation: fadeInUp 1s ease 0.8s both;
+  }
+  .sparkle-icon {
+    font-size: 1.4rem;
+    animation: twinkle 2s ease-in-out infinite;
+  }
+  .sparkle-icon:nth-child(2) { animation-delay: 0.4s; }
+  .sparkle-icon:nth-child(3) { animation-delay: 0.8s; }
+  .sparkle-icon:nth-child(4) { animation-delay: 1.2s; }
+  .sparkle-icon:nth-child(5) { animation-delay: 1.6s; }
+  @keyframes twinkle {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    50% { transform: scale(1.3) rotate(15deg); opacity: 0.7; }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .cover-deco {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--fairy), transparent);
+    pointer-events: none;
+  }
+  .cover-deco-1 { width: 120px; height: 120px; top: -40px; right: -30px; opacity: 0.5; }
+  .cover-deco-2 { width: 80px; height: 80px; bottom: -20px; left: -20px; background: radial-gradient(circle, var(--tea-green), transparent); opacity: 0.4; }
+
+  /* ==================== PAGE 2 — MUSIC ==================== */
+  #page2 {
+    background: linear-gradient(145deg, #FDF0F5 0%, var(--beige) 50%, #EDF5E8 100%);
+    padding: 40px 24px;
+    text-align: center;
+  }
+  .music-card {
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(12px);
+    border-radius: 28px;
+    padding: 40px 36px;
+    max-width: 380px;
+    width: 100%;
+    box-shadow: 0 16px 50px rgba(68,122,95,0.1);
+    border: 1px solid rgba(207,221,157,0.4);
+    z-index: 2;
+  }
+  .vinyl {
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50%, #1a1a1a 0%, #2a2a2a 30%, #3a2020 35%, #1a1a1a 40%, #2d1515 45%, #1a1a1a 50%, #2a1a1a 70%, #1a1a1a 100%);
+    margin: 0 auto 24px;
+    position: relative;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3), inset 0 0 0 12px rgba(131,45,81,0.15);
+    animation: spinVinyl 4s linear infinite paused;
+  }
+  .vinyl.playing { animation-play-state: running; }
+  .vinyl::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff 0%, #e0e0e0 50%, #ccc 100%);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+  @keyframes spinVinyl {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .music-title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--magenta);
+    margin-bottom: 6px;
+  }
+  .music-instruction {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: #9a7080;
+    font-size: 0.9rem;
+    margin-bottom: 28px;
+  }
+  .music-note {
+    font-size: 0.78rem;
+    color: #bba;
+    margin-top: 12px;
+    font-style: italic;
+  }
+  .play-btn {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--cyclamen), var(--magenta));
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto 20px;
+    box-shadow: 0 6px 20px rgba(131,45,81,0.3);
+    transition: all 0.3s ease;
+    color: white;
+  }
+  .play-btn:hover { transform: scale(1.08); }
+  audio { display: none; }
+  .song-name {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--viridian);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  /* ==================== PAGE 3 — PASSWORD ==================== */
+  #page3 {
+    background: linear-gradient(160deg, var(--fairy) 0%, var(--cream) 60%, var(--tea-green) 100%);
+    padding: 40px 24px;
+    text-align: center;
+  }
+  .pwd-card {
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 28px;
+    padding: 44px 36px;
+    max-width: 380px;
+    width: 100%;
+    box-shadow: 0 16px 50px rgba(131,45,81,0.1);
+    border: 1px solid var(--fairy);
+    z-index: 2;
+  }
+  .lock-icon { font-size: 3rem; margin-bottom: 16px; animation: lockBounce 2s ease-in-out infinite; }
+  @keyframes lockBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1) rotate(-5deg); }
+  }
+  .pwd-question {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--brown-text);
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  .pwd-hint {
+    font-size: 0.75rem;
+    color: var(--cyclamen);
+    margin-bottom: 24px;
+    letter-spacing: 1px;
+  }
+  .pwd-input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid var(--fairy);
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    text-align: center;
+    background: var(--cream);
+    color: var(--brown-text);
+    outline: none;
+    transition: border-color 0.3s;
+    letter-spacing: 4px;
+    margin-bottom: 16px;
+  }
+  .pwd-input:focus { border-color: var(--cyclamen); }
+  .pwd-input.error { border-color: #e07070; animation: shake 0.4s ease; }
+  .pwd-input.success { border-color: var(--viridian); }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    75% { transform: translateX(8px); }
+  }
+  .pwd-msg {
+    min-height: 24px;
+    font-size: 0.88rem;
+    margin-bottom: 16px;
+    font-style: italic;
+    transition: all 0.3s;
+  }
+  .pwd-msg.error-msg { color: #c05050; }
+  .pwd-msg.success-msg { color: var(--viridian); font-weight: 600; }
+
+  /* ==================== PAGE 4 — CROSSWORD ==================== */
+  #page4 {
+    background: linear-gradient(150deg, var(--cream) 0%, var(--fairy) 60%, var(--beige) 100%);
+    padding: 20px 16px;
+    text-align: center;
+    justify-content: flex-start;
+    padding-top: 30px;
+  }
+  .crossword-card {
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 28px 24px;
+    max-width: 440px;
+    width: 100%;
+    box-shadow: 0 16px 50px rgba(131,45,81,0.1);
+    border: 1px solid var(--fairy);
+    z-index: 2;
+    margin-bottom: 20px;
+  }
+  .cw-title {
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    color: var(--magenta);
+    margin-bottom: 4px;
+  }
+  .cw-subtitle {
+    font-size: 0.82rem;
+    color: #aaa;
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  .cw-question {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    text-align: left;
+  }
+  .cw-num {
+    min-width: 26px; height: 26px;
+    background: linear-gradient(135deg, var(--cyclamen), var(--magenta));
+    border-radius: 50%;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .cw-q-text {
+    font-size: 0.88rem;
+    color: var(--brown-text);
+    flex: 1;
+  }
+  .cw-input {
+    width: 110px;
+    padding: 6px 10px;
+    border: 2px solid var(--fairy);
+    border-radius: 20px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    text-align: center;
+    background: var(--cream);
+    color: var(--brown-text);
+    outline: none;
+    text-transform: capitalize;
+    transition: border-color 0.3s;
+    flex-shrink: 0;
+  }
+  .cw-input:focus { border-color: var(--cyclamen); }
+  .cw-input.correct { border-color: var(--viridian); background: #f0fff4; }
+  .cw-input.wrong { border-color: #e07070; }
+  .secret-phrase-box {
+    margin-top: 20px;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--fairy), var(--cream));
+    border-radius: 16px;
+    border: 2px dashed var(--cyclamen);
+    display: none;
+  }
+  .secret-phrase-box.show { display: block; animation: fadeInUp 0.8s ease; }
+  .secret-phrase {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--magenta);
+    letter-spacing: 2px;
+  }
+  .secret-label { font-size: 0.75rem; color: var(--cyclamen); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+
+  /* ==================== PAGE 5 — PULL TAG ==================== */
+  #page5 {
+    background: linear-gradient(150deg, var(--beige) 0%, var(--fairy) 100%);
+    text-align: center;
+    overflow: hidden;
+  }
+  .pull-instruction {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: #a07080;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    z-index: 2;
+    position: relative;
+  }
+  .pull-container {
+    position: relative;
+    z-index: 2;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .pull-string {
+    width: 3px;
+    height: 60px;
+    background: linear-gradient(to bottom, #b08090, var(--cyclamen));
+    border-radius: 2px;
+    position: relative;
+  }
+  .pull-tag {
+    width: 120px;
+    background: white;
+    border-radius: 8px 8px 8px 8px;
+    padding: 16px 14px 20px;
+    box-shadow: 0 8px 24px rgba(131,45,81,0.15);
+    cursor: grab;
+    position: relative;
+    border: 1px solid var(--fairy);
+    transition: transform 0.1s;
+  }
+  .pull-tag::before {
+    content: '';
+    position: absolute;
+    top: -8px; left: 50%;
+    transform: translateX(-50%);
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--fairy);
+    border: 2px solid var(--cyclamen);
+  }
+  .pull-tag-text {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--magenta);
+    line-height: 1.4;
+  }
+  .pull-arrow {
+    font-size: 1.5rem;
+    margin-top: 16px;
+    animation: bounceDown 1.2s ease-in-out infinite;
+    color: var(--cyclamen);
+  }
+  @keyframes bounceDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+  }
+  .pull-progress-bar {
+    width: 200px;
+    height: 6px;
+    background: var(--fairy);
+    border-radius: 10px;
+    margin-top: 24px;
+    overflow: hidden;
+  }
+  .pull-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--cyclamen), var(--magenta));
+    border-radius: 10px;
+    width: 0%;
+    transition: width 0.15s ease;
+  }
+  .pull-curtain {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(160deg, var(--fairy), var(--blush));
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+  }
+  .pull-curtain.show { opacity: 1; pointer-events: all; }
+  .curtain-text {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--magenta);
+    text-align: center;
+    animation: fadeInUp 0.8s ease;
+  }
+
+  /* ==================== PAGE 6 — LETTER ==================== */
+  #page6 {
+    background: linear-gradient(160deg, var(--beige) 0%, var(--cream) 100%);
+    padding: 30px 16px 80px;
+    justify-content: flex-start;
+    padding-top: 40px;
+  }
+  .letter-wrapper {
+    max-width: 420px;
+    width: 100%;
+    z-index: 2;
+  }
+  .letter-tag {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cyclamen);
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .letter-paper {
+    background: #FFFEF9;
+    border-radius: 4px 4px 0 0;
+    padding: 36px 30px 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.06);
+    position: relative;
+    max-height: 60vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--fairy) transparent;
+  }
+  .letter-paper::before {
+    content: '';
+    position: absolute;
+    left: 56px; top: 0; bottom: 0;
+    width: 1px;
+    background: rgba(234,105,147,0.2);
+  }
+  .letter-date {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.85rem;
+    color: #c0a0a8;
+    text-align: right;
+    margin-bottom: 20px;
+  }
+  .letter-salutation {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--magenta);
+    margin-bottom: 16px;
+  }
+  .letter-body {
+    font-family: var(--font-serif);
+    font-size: 0.92rem;
+    line-height: 1.85;
+    color: #4a3030;
+  }
+  .letter-body p { margin-bottom: 14px; }
+  .letter-sign {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--magenta);
+    margin-top: 24px;
+  }
+  .letter-footer {
+    background: #F9EEE4;
+    border-radius: 0 0 4px 4px;
+    padding: 16px 30px;
+    display: flex;
+    justify-content: flex-end;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-top: none;
+  }
+  .typewriter { overflow: hidden; }
+
+  /* ==================== PAGE 7 — GIFT BOX ==================== */
+  #page7 {
+    background: linear-gradient(150deg, #FDE8F0 0%, var(--cream) 50%, #EAF5EC 100%);
+    padding: 30px 16px;
+    text-align: center;
+    justify-content: flex-start;
+    padding-top: 40px;
+  }
+  .gift-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--magenta);
+    margin-bottom: 6px;
+    z-index: 2;
+    position: relative;
+  }
+  .gift-subtitle {
+    font-size: 0.82rem;
+    color: #aaa;
+    font-style: italic;
+    margin-bottom: 28px;
+    z-index: 2;
+    position: relative;
+  }
+  .gift-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    max-width: 360px;
+    width: 100%;
+    z-index: 2;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .gift-grid .gift-box:nth-child(4),
+  .gift-grid .gift-box:nth-child(5) {
+    grid-column: span 1;
+  }
+  /* center last 2 boxes */
+  .gift-grid-row2 {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    max-width: 360px;
+    width: 100%;
+    z-index: 2;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .gift-box {
+    background: white;
+    border-radius: 16px;
+    padding: 16px 10px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(131,45,81,0.1);
+    border: 2px solid var(--fairy);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .gift-box:hover:not(.locked) { transform: translateY(-4px) scale(1.03); box-shadow: 0 12px 30px rgba(131,45,81,0.2); }
+  .gift-box.opened { border-color: var(--viridian); background: #f0fff4; cursor: default; }
+  .gift-box.locked {
+    opacity: 0.45;
+    cursor: not-allowed;
+    filter: grayscale(0.4);
+  }
+  .gift-emoji { font-size: 2rem; display: block; margin-bottom: 6px; }
+  .gift-label { font-family: var(--font-display); font-size: 0.8rem; color: var(--magenta); }
+  .gift-letter-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s;
+  }
+  .gift-letter-overlay.show { opacity: 1; pointer-events: all; }
+  .gift-letter-inner {
+    background: #FFFEF9;
+    border-radius: 20px;
+    padding: 36px 28px;
+    max-width: 360px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    animation: popIn 0.5s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  @keyframes popIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  .gift-letter-close {
+    position: absolute;
+    top: 14px; right: 16px;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: #bbb;
+    line-height: 1;
+  }
+  .gift-letter-icon { font-size: 2.5rem; text-align: center; display: block; margin-bottom: 12px; }
+  .gift-letter-title { font-family: var(--font-display); font-size: 1.3rem; color: var(--magenta); text-align: center; margin-bottom: 12px; }
+  .gift-letter-text { font-family: var(--font-serif); font-style: italic; font-size: 0.9rem; color: var(--brown-text); line-height: 1.7; text-align: center; }
+
+  /* ==================== PAGE 8 — FINAL LETTER ==================== */
+  #page8 {
+    background: linear-gradient(160deg, var(--fairy) 0%, var(--cream) 50%, var(--tea-green) 100%);
+    padding: 30px 16px 80px;
+    justify-content: flex-start;
+    padding-top: 40px;
+  }
+  .final-wrapper {
+    max-width: 420px;
+    width: 100%;
+    z-index: 2;
+  }
+  .final-label {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--viridian);
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .final-paper {
+    background: #FFFEF9;
+    border-radius: 16px;
+    padding: 36px 30px 40px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.09);
+    border: 1px solid rgba(0,0,0,0.06);
+    max-height: 55vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--fairy) transparent;
+    margin-bottom: 20px;
+  }
+  .final-heading {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--magenta);
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  .final-body {
+    font-family: var(--font-serif);
+    font-size: 0.92rem;
+    line-height: 1.85;
+    color: #4a3030;
+  }
+  .final-body p { margin-bottom: 14px; }
+  .final-closing {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--fairy), var(--cream));
+    border-radius: 12px;
+    margin-top: 20px;
+    border: 1px dashed var(--cyclamen);
+  }
+  .final-closing-text {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--magenta);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* ==================== END SCREEN ==================== */
+  #endScreen {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, var(--fairy) 0%, var(--blush) 40%, var(--cream) 100%);
+    z-index: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease;
+    text-align: center;
+    padding: 40px;
+  }
+  #endScreen.show { opacity: 1; pointer-events: all; }
+  .end-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 8vw, 3rem);
+    color: var(--magenta);
+    margin-bottom: 16px;
+    animation: fadeInUp 1s ease 0.5s both;
+  }
+  .end-subtitle {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: #a07080;
+    font-size: 1rem;
+    animation: fadeInUp 1s ease 1s both;
+  }
+  .floating-heart {
+    position: fixed;
+    font-size: 1.5rem;
+    animation: floatHeart 3s ease-out forwards;
+    pointer-events: none;
+    z-index: 501;
+  }
+  @keyframes floatHeart {
+    0% { transform: translateY(0) scale(0.5); opacity: 1; }
+    100% { transform: translateY(-80vh) scale(1.2); opacity: 0; }
+  }
+
+  /* ==================== PALETTE STRIP ==================== */
+  .palette-strip {
+    display: flex;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+    height: 8px;
+    margin-bottom: 24px;
+  }
+  .palette-strip div { flex: 1; }
+
+  /* ==================== PROGRESS DOTS ==================== */
+  .progress-dots {
+    position: fixed;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 50;
+  }
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--fairy);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .dot.active { background: var(--magenta); transform: scale(1.3); }
+  .dot.done { background: var(--cyclamen); }
+
+  /* ==================== RESPONSIVE ==================== */
+  @media (max-width: 400px) {
+    .cover-card, .music-card, .pwd-card { padding: 32px 22px; }
+    .gift-grid { gap: 10px; }
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--fairy); border-radius: 10px; }
+</style>
+</head>
+<body>
+
+<!-- Floating stars background -->
+<div class="stars-bg" id="starsBg"></div>
+
+<!-- Progress dots -->
+<div class="progress-dots" id="progressDots">
+  <div class="dot active" onclick="goToPage(0)" title="Cover"></div>
+  <div class="dot" onclick="goToPage(1)" title="Music"></div>
+  <div class="dot" onclick="goToPage(2)" title="Password"></div>
+  <div class="dot" onclick="goToPage(3)" title="Puzzle"></div>
+  <div class="dot" onclick="goToPage(4)" title="Pull"></div>
+  <div class="dot" onclick="goToPage(5)" title="Letter"></div>
+  <div class="dot" onclick="goToPage(6)" title="Gift"></div>
+  <div class="dot" onclick="goToPage(7)" title="Final"></div>
+</div>
+
+<!-- ========== PAGE 1 — COVER ========== -->
+<div class="page active" id="page1">
+  <div class="cover-card">
+    <div class="cover-deco cover-deco-1"></div>
+    <div class="cover-deco cover-deco-2"></div>
+    <div class="palette-strip">
+      <div style="background:#832D51"></div>
+      <div style="background:#EA6993"></div>
+      <div style="background:#F8CAE4"></div>
+      <div style="background:#CFDD9D"></div>
+      <div style="background:#447A5F"></div>
+    </div>
+    <div class="cover-eyebrow">✦ 14 April 2026 ✦</div>
+    <h1 class="cover-title">Happy 3rd Mensiversary, Tengils.</h1>
+    <p class="cover-subtitle">Moments I Never Want to Forget</p>
+    <div class="sparkle-row">
+      <span class="sparkle-icon">🌸</span>
+      <span class="sparkle-icon">✨</span>
+      <span class="sparkle-icon">💌</span>
+      <span class="sparkle-icon">✨</span>
+      <span class="sparkle-icon">🌿</span>
+    </div>
+    <button class="btn" onclick="nextPage(0)">Open ✦</button>
+  </div>
+</div>
+
+<!-- ========== PAGE 2 — MUSIC ========== -->
+<div class="page" id="page2">
+  <div class="music-card">
+    <div class="palette-strip">
+      <div style="background:#832D51"></div>
+      <div style="background:#EA6993"></div>
+      <div style="background:#F8CAE4"></div>
+      <div style="background:#CFDD9D"></div>
+      <div style="background:#447A5F"></div>
+    </div>
+    <div class="vinyl" id="vinylDisc">🎵</div>
+    <div class="song-name">🎧 Our Song</div>
+    <h2 class="music-title">Set the Mood First</h2>
+    <p class="music-instruction">Play this song before continuing.</p>
+    <!-- EDITABLE: change src to your audio file URL -->
+    <audio id="bgMusic" loop>
+      <source src="YOUR_MUSIC_URL_HERE.mp3" type="audio/mpeg">
+    </audio>
+    <button class="play-btn" id="playBtn" onclick="togglePlay()">▶</button>
+    <p class="music-note">* Upload your song URL in the code to enable music *</p>
+    <br>
+    <button class="btn" onclick="nextPage(1)">Continue ✦</button>
+  </div>
+</div>
+
+<!-- ========== PAGE 3 — PASSWORD ========== -->
+<div class="page" id="page3">
+  <div class="pwd-card">
+    <div class="palette-strip">
+      <div style="background:#832D51"></div>
+      <div style="background:#EA6993"></div>
+      <div style="background:#F8CAE4"></div>
+      <div style="background:#CFDD9D"></div>
+      <div style="background:#447A5F"></div>
+    </div>
+    <div class="lock-icon">🔒</div>
+    <p class="pwd-question">Before entering, solve this password first.<br><em>When did Tengils begin?</em></p>
+    <p class="pwd-hint">Hint: It's an 8-digit code. (dd-mm-yyyy)</p>
+    <!-- EDITABLE: change CORRECT_PASSWORD below -->
+    <input type="text" class="pwd-input" id="pwdInput" placeholder="__ - __ - ____" maxlength="10" oninput="formatPwdInput(this)" onkeydown="if(event.key==='Enter')checkPassword()">
+    <div class="pwd-msg" id="pwdMsg"></div>
+    <button class="btn" onclick="checkPassword()">Unlock ✦</button>
+  </div>
+</div>
+
+<!-- ========== PAGE 4 — CROSSWORD ========== -->
+<div class="page" id="page4">
+  <div class="crossword-card">
+    <div class="palette-strip">
+      <div style="background:#832D51"></div>
+      <div style="background:#EA6993"></div>
+      <div style="background:#F8CAE4"></div>
+      <div style="background:#CFDD9D"></div>
+      <div style="background:#447A5F"></div>
+    </div>
+    <h2 class="cw-title">🧩 Siapa dia?</h2>
+    <p class="cw-subtitle">Tebak semua, lalu temukan kalimat rahasia!</p>
+
+    <!-- EDITABLE: questions and answers below -->
+    <div id="cwQuestions"></div>
+
+    <div class="secret-phrase-box" id="secretBox">
+      <div class="secret-label">✦ Kalimat Rahasia ✦</div>
+      <div class="secret-phrase" id="secretPhrase"></div>
+    </div>
+
+    <br>
+    <button class="btn" id="cwContinueBtn" style="display:none" onclick="nextPage(3)">Continue ✦</button>
+  </div>
+</div>
+
+<!-- ========== PAGE 5 — PULL TAG ========== -->
+<div class="page" id="page5">
+  <p class="pull-instruction">Tarik tag di bawah ini... perlahan 🌸</p>
+  <div class="pull-container" id="pullContainer">
+    <div class="pull-string"></div>
+    <div class="pull-tag" id="pullTag">
+      <div class="pull-tag-text">✦ Pull to<br>Open ✦</div>
+    </div>
+    <div class="pull-arrow">↓</div>
+  </div>
+  <div class="pull-progress-bar">
+    <div class="pull-progress-fill" id="pullFill"></div>
+  </div>
+  <br>
+  <p style="font-size:0.75rem;color:#bbb;font-style:italic;">Drag the tag downward</p>
+</div>
+
+<!-- Pull curtain transition -->
+<div class="pull-curtain" id="pullCurtain">
+  <div class="curtain-text">💌<br>Sebuah surat untukmu...</div>
+</div>
+
+<!-- ========== PAGE 6 — LETTER ========== -->
+<div class="page" id="page6">
+  <div class="letter-wrapper">
+    <div class="letter-tag">✦ A Letter For You ✦</div>
+    <div class="letter-paper" id="letterPaper">
+      <!-- EDITABLE: Change the letter content below -->
+      <div class="letter-date">14 April 2026</div>
+      <div class="letter-salutation">Dear Tengils,</div>
+      <div class="letter-body typewriter" id="letterContent">
+        <p>Hiii, selamat hari ini yang spesial banget buat kita. Aku nulis ini dengan senyum-senyum sendiri, nggak tahu harus mulai dari mana karena terlalu banyak yang mau aku ceritain.</p>
+        <p>3 bulan kita udah ngelewatin banyak hal bareng. Dari yang nggak sengaja ketemu, terus tiba-tiba ngerasa kayak udah kenal lama banget. Itu bukan kebetulan — itu emang karma baik yang ngirim kamu ke hidupku.</p>
+        <p>Kamu itu unik banget. Dari cara kamu ketawa, cara kamu marah, cara kamu ngeliatin sesuatu yang kamu suka... semuanya genuine, semuanya kamu banget. Dan aku suka itu.</p>
+        <p>Makasih udah jadi tempat yang aman buat cerita. Makasih udah dengerin kalau aku lagi random banget. Makasih udah ada, literally.</p>
+        <p>Semoga bulan-bulan ke depan kita makin solid, makin banyak kenangan yang dibuat, dan makin banyak hal gila yang kita lakuin bareng. Aku excited buat semuanya.</p>
+        <p>You're one of my favorite people, and I mean that. 🌸</p>
+      </div>
+      <div class="letter-sign">With love & sparkles,<br>Estelle ✦</div>
+    </div>
+    <div class="letter-footer">
+      <button class="btn" onclick="nextPage(5)">Next Surprise ✦</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PAGE 7 — GIFT BOX ========== -->
+<div class="page" id="page7">
+  <h2 class="gift-title">🎁 Choose a Gift</h2>
+  <p class="gift-subtitle">Pilih satu kotak hadiah untukmu...</p>
+  <div class="gift-grid" id="giftGrid"></div>
+  <div class="gift-grid-row2" id="giftGrid2"></div>
+</div>
+
+<!-- Gift letter overlay -->
+<div class="gift-letter-overlay" id="giftOverlay">
+  <div class="gift-letter-inner">
+    <button class="gift-letter-close" onclick="closeGiftLetter()">✕</button>
+    <span class="gift-letter-icon" id="giftLetterIcon"></span>
+    <h3 class="gift-letter-title" id="giftLetterTitle"></h3>
+    <p class="gift-letter-text" id="giftLetterText"></p>
+  </div>
+</div>
+
+<!-- ========== PAGE 8 — FINAL LETTER ========== -->
+<div class="page" id="page8">
+  <div class="final-wrapper">
+    <div class="final-label">✦ Final Letter ✦</div>
+    <div class="final-paper">
+      <h2 class="final-heading">Untuk Kamu, Tengils 🌸</h2>
+      <!-- EDITABLE: Final letter content -->
+      <div class="final-body">
+        <p>Kalau kamu baca sampai sini, berarti kamu udah nemenin aku di setiap bagian kecil halaman ini. Dan itu sendiri udah bikin aku terharu.</p>
+        <p>3 bulan mungkin kelihatan sebentar, tapi untuk aku, setiap menitnya berarti. Setiap chat tengah malam, setiap ketawa yang nggak jelas, setiap momen yang bikin kita makin dekat — semua itu nggak aku anggap sepele.</p>
+        <p>Kamu punya cara tersendiri untuk bikin orang di sekitar kamu ngerasa nyaman. Dan aku salah satunya. Kamu nggak pernah ngurangin siapapun — kamu malah nambah warna ke hidup mereka, termasuk hidupku.</p>
+        <p>Aku harap kamu tahu betapa berharganya kamu, bukan cuma buat aku, tapi buat semua orang yang beruntung bisa kenal kamu.</p>
+        <p>Di hari mensiversary ke-3 ini, aku cuma mau bilang: terima kasih. Terima kasih udah ada, terima kasih udah jadi kamu, dan terima kasih udah mau ada bareng aku.</p>
+        <p>Semoga kita masih bisa ngerayain ini berkali-kali lagi. 💌</p>
+      </div>
+      <div class="letter-sign" style="text-align:center;margin-top:20px;">Sayang,<br>Estelle ✦</div>
+    </div>
+    <div class="final-closing">
+      <p class="final-closing-text">"I wouldn't trade our memories for anything.<br>Thank you for being here."</p>
+    </div>
+    <br>
+    <div style="text-align:center">
+      <button class="btn" onclick="showEnd()">The End ✨</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== END SCREEN ========== -->
+<div id="endScreen">
+  <div class="sparkle-row" style="margin-bottom:24px">
+    <span class="sparkle-icon">🌸</span>
+    <span class="sparkle-icon">✨</span>
+    <span class="sparkle-icon">💖</span>
+    <span class="sparkle-icon">✨</span>
+    <span class="sparkle-icon">🌿</span>
+  </div>
+  <h1 class="end-title">Happy 3rd Mensiversary, Tengils!</h1>
+  <p class="end-subtitle">Here's to more memories, more laughter, and more us. 🌸</p>
+</div>
+
+<script>
+  // ==================== CONFIG (EDITABLE) ====================
+  const CONFIG = {
+    password: "14-4-2026",   // CHANGE THIS
+    secretPhrase: "KITA ADALAH SQUAD TERBAIK! 🌸",  // Revealed after crossword
+    crosswordQA: [
+      { q: "Siapa yang paling ngambekan?", a: "Arsh" },
+      { q: "Siapa yang paling badung?", a: "Kairo" },
+      { q: "Siapa yang paling pede sedunia?", a: "Jihan" },
+      { q: "Siapa yang suka ngajak ghibah duluan?", a: "Sorein" },
+      { q: "Siapa yang paling cengeng & penakut?", a: "Neith" },
+      { q: "Siapa yang paling cantik fenomenal (fakta)?", a: "Estelle" },
+    ],
+    giftBoxes: [
+      {
+        emoji: "🌸", label: "Kotak Pink",
+        icon: "🌸", title: "Hadiah 1: Bunga Persahabatan",
+        text: "Seperti bunga yang mekar, persahabatan kita terus tumbuh dan semakin indah setiap harinya. Kamu adalah bunga yang paling cantik di taman hidupku. 🌸"
+      },
+      {
+        emoji: "✨", label: "Kotak Bintang",
+        icon: "⭐", title: "Hadiah 2: Bintang Untukmu",
+        text: "Kamu bersinar lebih terang dari bintang manapun. Di malam-malam gelap sekalipun, kamu selalu jadi cahaya yang hangat dan menenangkan. 💫"
+      },
+      {
+        emoji: "💌", label: "Kotak Surat",
+        icon: "💌", title: "Hadiah 3: Kata-kata Tulus",
+        text: "Kata-kata yang paling tulus dan hangat dari hatiku: Terima kasih sudah menjadi salah satu alasan terbesarku untuk terus tersenyum setiap hari. 💕"
+      },
+      {
+        emoji: "🍀", label: "Kotak Hijau",
+        icon: "🍀", title: "Hadiah 4: Keberuntungan",
+        text: "Bertemu denganmu adalah keberuntungan terbesar yang pernah aku dapat. Semoga kita selalu dijaga dan selalu ada satu sama lain. 🌿"
+      },
+      {
+        emoji: "🎀", label: "Kotak Pita",
+        icon: "🎁", title: "Hadiah 5: Kenangan Terindah",
+        text: "Setiap momen yang kita lewati bareng adalah hadiah yang tak ternilai. Makasih udah jadi bagian dari cerita hidupku yang paling berwarna. 🎀"
+      },
+    ]
+  };
+
+  // ==================== STATE ====================
+  let currentPage = 0;
+  const totalPages = 8;
+  let giftOpened = false;
+  let pullStartY = 0;
+  let pulling = false;
+  let pullAmount = 0;
+  const PULL_THRESHOLD = 120;
+
+  // Load saved progress
+  try {
+    const saved = localStorage.getItem('mensiversary_page');
+    if (saved !== null) currentPage = parseInt(saved);
+  } catch(e) {}
+
+  // ==================== PAGE NAVIGATION ====================
+  function goToPage(idx) {
+    const pages = document.querySelectorAll('.page');
+    const dots = document.querySelectorAll('.dot');
+    pages[currentPage].classList.add('exit');
+    setTimeout(() => {
+      pages[currentPage].classList.remove('active', 'exit');
+      currentPage = idx;
+      pages[currentPage].classList.add('active');
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === currentPage);
+        d.classList.toggle('done', i < currentPage);
+      });
+      try { localStorage.setItem('mensiversary_page', currentPage); } catch(e) {}
+      if (currentPage === 3) buildCrossword();
+      if (currentPage === 6) buildGifts();
+    }, 400);
+  }
+
+  function nextPage(from) {
+    if (from + 1 < totalPages) goToPage(from + 1);
+  }
+
+  // Init to saved page
+  window.onload = () => {
+    initStars();
+    buildCrossword();
+    buildGifts();
+    initPullTag();
+    if (currentPage > 0) {
+      document.querySelectorAll('.page')[0].classList.remove('active');
+      document.querySelectorAll('.page')[currentPage].classList.add('active');
+      document.querySelectorAll('.dot').forEach((d, i) => {
+        d.classList.toggle('active', i === currentPage);
+        d.classList.toggle('done', i < currentPage);
+      });
+    }
+  };
+
+  // ==================== FLOATING STARS ====================
+  function initStars() {
+    const bg = document.getElementById('starsBg');
+    const symbols = ['✦', '✧', '✿', '❋', '⋆', '⁕', '🌸', '✨'];
+    for (let i = 0; i < 18; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      star.style.cssText = `
+        left: ${Math.random() * 100}%;
+        font-size: ${0.6 + Math.random() * 1.2}rem;
+        animation-duration: ${6 + Math.random() * 10}s;
+        animation-delay: ${-Math.random() * 10}s;
+        color: ${['#EA6993','#832D51','#CFDD9D','#447A5F','#F8CAE4'][Math.floor(Math.random()*5)]};
+        opacity: 0.5;
+      `;
+      bg.appendChild(star);
+    }
+  }
+
+  // ==================== MUSIC ====================
+  function togglePlay() {
+    const audio = document.getElementById('bgMusic');
+    const btn = document.getElementById('playBtn');
+    const vinyl = document.getElementById('vinylDisc');
+    if (audio.src && audio.src !== window.location.href) {
+      if (audio.paused) {
+        audio.play().catch(() => {});
+        btn.textContent = '⏸';
+        vinyl.classList.add('playing');
+      } else {
+        audio.pause();
+        btn.textContent = '▶';
+        vinyl.classList.remove('playing');
+      }
+    } else {
+      btn.textContent = '▶';
+      alert('🎵 Masukkan URL lagu di bagian audio src pada kode HTML ya!');
+    }
+  }
+
+  // ==================== PASSWORD ====================
+  function formatPwdInput(input) {
+    let val = input.value.replace(/[^0-9]/g, '');
+    if (val.length > 8) val = val.slice(0, 8);
+    let formatted = '';
+    if (val.length <= 2) formatted = val;
+    else if (val.length <= 3) formatted = val.slice(0,2) + '-' + val.slice(2);
+    else if (val.length <= 6) formatted = val.slice(0,2) + '-' + val.slice(2,3) + '-' + val.slice(3);
+    else formatted = val.slice(0,2) + '-' + val.slice(2,3) + '-' + val.slice(3);
+    // Simpler approach: just show with dashes at positions
+    input.value = input.value; // Let user type freely
+  }
+
+  function checkPassword() {
+    const input = document.getElementById('pwdInput');
+    const msg = document.getElementById('pwdMsg');
+    const val = input.value.trim();
+
+    if (val === CONFIG.password) {
+      input.className = 'pwd-input success';
+      msg.className = 'pwd-msg success-msg';
+      msg.textContent = '✦ Welcome. ✦';
+      document.querySelector('#page3 .lock-icon').textContent = '🔓';
+      confetti();
+      setTimeout(() => nextPage(2), 1500);
+    } else {
+      input.className = 'pwd-input error';
+      msg.className = 'pwd-msg error-msg';
+      msg.textContent = 'Oops, wrong code. Try again! 💭';
+      setTimeout(() => input.className = 'pwd-input', 800);
+    }
+  }
+
+  // ==================== CROSSWORD ====================
+  let cwCorrect = 0;
+
+  function buildCrossword() {
+    const container = document.getElementById('cwQuestions');
+    if (container.children.length > 0) return;
+    CONFIG.crosswordQA.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'cw-question';
+      div.innerHTML = `
+        <div class="cw-num">${i+1}</div>
+        <div class="cw-q-text">${item.q}</div>
+        <input class="cw-input" id="cw${i}" placeholder="..." data-answer="${item.a.toLowerCase()}" oninput="checkCW(this,${i})" autocomplete="off" spellcheck="false">
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  function checkCW(input, idx) {
+    const val = input.value.trim().toLowerCase();
+    const ans = input.dataset.answer;
+    if (val === ans) {
+      input.className = 'cw-input correct';
+      checkAllCW();
+    } else if (val.length > 0) {
+      input.className = 'cw-input wrong';
+    } else {
+      input.className = 'cw-input';
+    }
+  }
+
+  function checkAllCW() {
+    const inputs = document.querySelectorAll('.cw-input');
+    const allCorrect = [...inputs].every(inp => inp.value.trim().toLowerCase() === inp.dataset.answer);
+    if (allCorrect) {
+      setTimeout(() => {
+        const box = document.getElementById('secretBox');
+        const phrase = document.getElementById('secretPhrase');
+        box.classList.add('show');
+        phrase.textContent = CONFIG.secretPhrase;
+        confetti();
+        document.getElementById('cwContinueBtn').style.display = 'inline-block';
+      }, 400);
+    }
+  }
+
+  // ==================== PULL TAG ====================
+  function initPullTag() {
+    const tag = document.getElementById('pullTag');
+    let startY = 0;
+
+    tag.addEventListener('mousedown', startPull);
+    tag.addEventListener('touchstart', e => startPull(e.touches[0]), { passive: true });
+    document.addEventListener('mousemove', movePull);
+    document.addEventListener('touchmove', e => movePull(e.touches[0]), { passive: true });
+    document.addEventListener('mouseup', endPull);
+    document.addEventListener('touchend', endPull);
+
+    function startPull(e) {
+      pulling = true;
+      startY = e.clientY;
+    }
+    function movePull(e) {
+      if (!pulling) return;
+      pullAmount = Math.max(0, Math.min(e.clientY - startY, PULL_THRESHOLD + 20));
+      const pct = Math.min(pullAmount / PULL_THRESHOLD * 100, 100);
+      document.getElementById('pullFill').style.width = pct + '%';
+      tag.style.transform = `translateY(${pullAmount}px)`;
+      if (pullAmount >= PULL_THRESHOLD) {
+        pulling = false;
+        triggerPullComplete();
+      }
+    }
+    function endPull() {
+      if (!pulling) return;
+      pulling = false;
+      if (pullAmount < PULL_THRESHOLD) {
+        tag.style.transform = 'translateY(0)';
+        document.getElementById('pullFill').style.width = '0%';
+        pullAmount = 0;
+      }
+    }
+  }
+
+  function triggerPullComplete() {
+    const curtain = document.getElementById('pullCurtain');
+    curtain.classList.add('show');
+    confetti();
+    setTimeout(() => {
+      curtain.classList.remove('show');
+      nextPage(4);
+      document.getElementById('pullTag').style.transform = 'translateY(0)';
+      document.getElementById('pullFill').style.width = '0%';
+      pullAmount = 0;
+    }, 1800);
+  }
+
+  // ==================== GIFTS ====================
+  function buildGifts() {
+    const grid1 = document.getElementById('giftGrid');
+    const grid2 = document.getElementById('giftGrid2');
+    if (grid1.children.length > 0) return;
+
+    CONFIG.giftBoxes.forEach((gift, i) => {
+      const box = document.createElement('div');
+      box.className = 'gift-box';
+      box.id = `gift${i}`;
+      box.innerHTML = `<span class="gift-emoji">${gift.emoji}</span><div class="gift-label">${gift.label}</div>`;
+      box.onclick = () => openGift(i);
+      if (i < 3) grid1.appendChild(box);
+      else grid2.appendChild(box);
+    });
+  }
+
+  function openGift(idx) {
+    if (giftOpened) return;
+    giftOpened = true;
+
+    const gift = CONFIG.giftBoxes[idx];
+    document.querySelectorAll('.gift-box').forEach((b, i) => {
+      if (i === idx) b.classList.add('opened');
+      else b.classList.add('locked');
+    });
+
+    document.getElementById('giftLetterIcon').textContent = gift.icon;
+    document.getElementById('giftLetterTitle').textContent = gift.title;
+    document.getElementById('giftLetterText').textContent = gift.text;
+    document.getElementById('giftOverlay').classList.add('show');
+    confetti();
+
+    setTimeout(() => {
+      closeGiftLetter();
+      setTimeout(() => nextPage(6), 600);
+    }, 5000);
+  }
+
+  function closeGiftLetter() {
+    document.getElementById('giftOverlay').classList.remove('show');
+  }
+
+  // ==================== END SCREEN ====================
+  function showEnd() {
+    const screen = document.getElementById('endScreen');
+    screen.classList.add('show');
+    spawnHearts();
+    confetti();
+  }
+
+  function spawnHearts() {
+    const emojis = ['💖', '🌷', '✨', '💕', '🌿', '⭐'];
+    for (let i = 0; i < 20; i++) {
+      setTimeout(() => {
+        const h = document.createElement('div');
+        h.className = 'floating-heart';
+        h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        h.style.cssText = `left:${Math.random()*90}%; bottom:0; animation-delay:0s; animation-duration:${2+Math.random()*2}s;`;
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 4000);
+      }, i * 120);
+    }
+  }
+
+  // ==================== CONFETTI ====================
+  function confetti() {
+    const colors = ['#832D51','#EA6993','#F8CAE4','#CFDD9D','#447A5F','#FFF','#FFD700'];
+    for (let i = 0; i < 35; i++) {
+      setTimeout(() => {
+        const piece = document.createElement('div');
+        piece.className = 'confetti-piece';
+        piece.style.cssText = `
+          left: ${Math.random()*100}%;
+          background: ${colors[Math.floor(Math.random()*colors.length)]};
+          width: ${6+Math.random()*6}px;
+          height: ${6+Math.random()*6}px;
+          border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+          animation-duration: ${1.5+Math.random()*2}s;
+          animation-delay: ${Math.random()*0.5}s;
+        `;
+        document.body.appendChild(piece);
+        setTimeout(() => piece.remove(), 3500);
+      }, i * 40);
+    }
+  }
+</script>
+</body>
+</html>
