@@ -1238,23 +1238,20 @@
 
   // ==================== MUSIC ====================
   function togglePlay() {
-    const audio = document.getElementById('bgMusic');
-    const btn = document.getElementById('playBtn');
-    const vinyl = document.getElementById('vinylDisc');
-    if (audio.src && audio.src !== window.location.href) {
-      if (audio.paused) {
-        audio.play().catch(() => {});
-        btn.textContent = '⏸';
-        vinyl.classList.add('playing');
-      } else {
-        audio.pause();
-        btn.textContent = '▶';
-        vinyl.classList.remove('playing');
-      }
-    } else {
-      btn.textContent = '▶';
-      alert('🎵 Masukkan URL lagu di bagian audio src pada kode HTML ya!');
-    }
+  const audio = document.getElementById('bgMusic');
+  const btn = document.getElementById('playBtn');
+  const vinyl = document.getElementById('vinylDisc');
+
+  if (audio.paused) {
+    audio.play();
+    btn.textContent = '⏸';
+    vinyl.classList.add('playing');
+  } else {
+    audio.pause();
+    btn.textContent = '▶';
+    vinyl.classList.remove('playing');
+  }
+}
   }
 
   // ==================== PASSWORD ====================
