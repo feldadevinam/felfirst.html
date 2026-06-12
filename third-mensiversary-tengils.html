@@ -1116,7 +1116,10 @@
   <h1 class="end-title">Happy 3rd Mensiversary, Tengils!</h1>
   <p class="end-subtitle">Here's to more memories, more laughter, and more us. 🌸</p>
 </div>
-
+<br><br>
+<button class="btn" onclick="restartWebsite()">
+  ↺ Read Again From The Start
+</button>
 <script>
   // ==================== CONFIG (EDITABLE) ====================
   const CONFIG = {
@@ -1470,6 +1473,31 @@
       }, i * 40);
     }
   }
+  function restartWebsite() {
+  document.getElementById('endScreen').classList.remove('show');
+
+  currentPage = 0;
+
+  document.querySelectorAll('.page').forEach(page => {
+    page.classList.remove('active', 'exit');
+  });
+
+  document.getElementById('page1').classList.add('active');
+
+  document.querySelectorAll('.dot').forEach((dot, i) => {
+    dot.classList.toggle('active', i === 0);
+    dot.classList.remove('done');
+  });
+
+  try {
+    localStorage.setItem('mensiversary_page', 0);
+  } catch(e) {}
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
 </script>
 </body>
 </html>
